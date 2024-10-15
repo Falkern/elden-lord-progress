@@ -1,0 +1,346 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+/* CSS Variables */
+:root {
+    --main-bg-color: #000; /* Black background */
+    --main-text-color: #fff; /* White text color */
+    --accent-color: #fff; /* White accent color for links and buttons */
+    --hover-transform: translateY(-5px);
+    --hover-box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5); /* Soft white shadow */
+    --transition-ease: 0.3s ease;
+    --font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: var(--font-family);
+    color: var(--main-text-color);
+    background-color: var(--main-bg-color);
+    transition: background-color 0.5s ease;
+    padding: 20px; /* Padding around body */
+}
+
+/* Title Styles */
+.title {
+    color: var(--accent-color);
+    font-size: 60px; /* Increased title size */
+    margin-top: 0; /* Reset margin */
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+/* Container Styles */
+.container {
+    background-color: rgba(255, 255, 255, 0.1); /* Slight transparency */
+    margin: 20px auto; /* Center the container horizontally */
+    border-radius: 15px; /* More rounded corners */
+    padding: 30px; /* Increased padding */
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2); /* Softer shadow */
+    transition: transform var(--transition-ease), box-shadow var(--transition-ease);
+    width: 90vw;
+    max-width: 1200px;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Hover Effects for Containers */
+.container:hover {
+    transform: scale(1.02);
+    box-shadow: var(--hover-box-shadow);
+}
+
+/* Form Section */
+#formSection {
+    text-align: center;
+}
+
+/* Upload Area Styles */
+.upload-area {
+    border: 2px dashed var(--accent-color);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: border-color 0.3s ease;
+    margin: 20px 0; /* Spacing around the upload area */
+    background-color: rgba(255, 255, 255, 0.1); /* Solid transparent background */
+}
+
+.upload-area.hover {
+    border-color: #fff; /* Change color on hover */
+}
+
+.upload-area span {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--main-text-color);
+}
+
+/* Item Card Styles */
+.itemCard, .disabledCard {
+    background: rgba(255, 255, 255, 0.1); /* Slight transparency for item cards */
+    border-radius: 15px; /* More rounded corners */
+    margin: 10px; /* Space between cards */
+    width: 140px; /* Increased width */
+    height: 220px; /* Increased height */
+    text-align: center;
+    padding: 15px; /* Increased padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
+    transition: transform var(--transition-ease), box-shadow var(--transition-ease);
+}
+
+.itemCard:hover {
+    transform: scale(1.05) var(--hover-transform);
+    box-shadow: var(--hover-box-shadow);
+}
+
+.disabledCard {
+    background-color: rgba(255, 255, 255, 0.3);
+    opacity: 1;
+}
+
+.disabledCard img {
+    opacity: 0.5;
+}
+
+.itemCard img {
+    width: 100px;
+    transition: transform var(--transition-ease);
+}
+
+.itemCard:hover img {
+    transform: scale(1.1);
+}
+
+/* Item List */
+.itemList, .collectionItemList {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center; /* Center items */
+}
+
+/* Icon List */
+.iconList img {
+    width: 30px; /* Slightly larger icons */
+    height: 30px;
+    vertical-align: middle;
+    background-color: rgba(255, 255, 255, 0.3); /* Lighter background for icons */
+    border-radius: 50%;
+    margin-left: 10px;
+    transition: transform var(--transition-ease);
+}
+
+.iconList img:hover {
+    transform: rotate(360deg);
+}
+
+/* Definition List */
+dd.closed {
+    display: none;
+}
+
+dd.opened {
+    display: block;
+}
+
+dt.closed::before, dt.opened::before {
+    font-size: 14px; /* Larger font size for better readability */
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+dt.closed::before {
+    content: '►';
+}
+
+dt.opened::before {
+    content: '▼';
+}
+
+/* Counter */
+.counter {
+    font-size: 20px; /* Increased font size */
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+/* Links */
+a {
+    color: var(--accent-color); /* White for links */
+    transition: color var(--transition-ease);
+}
+
+a:hover {
+    color: #fff; /* White color on hover */
+}
+
+.itemCard a, #collectionHeader a {
+    text-decoration: none;
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted white;
+}
+
+.tooltip .tooltipText {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    width: 400px;
+    text-align: justify;
+    background-color: rgba(255, 255, 255, 0.9); /* Light background for tooltip */
+    color: var(--main-bg-color); /* Black text color */
+    padding: 10px 15px;
+    border-radius: 5px;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -200px;
+    transition: opacity var(--transition-ease);
+}
+
+.tooltip:hover .tooltipText {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Collection Screen */
+#collectionScreen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.95); /* More opaque */
+    z-index: 2;
+    color: var(--main-text-color);
+    overflow-y: scroll;
+    transition: background-color 0.5s ease;
+}
+
+/* Collection Main */
+#collectionMain {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Collection Header */
+#collectionHeader {
+    width: 100%;
+}
+
+#collectionHeader div {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .itemCard {
+        width: 100px; /* Smaller item cards on mobile */
+        height: 180px; /* Adjust height accordingly */
+    }
+    .title {
+        font-size: 36px; /* Smaller title on mobile */
+    }
+}
+
+/* Removed duplicate .upload-area styles */
+
+.file-name {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #fff; /* Change text color to white */
+}
+
+/* Button styles */
+#calculate {
+    background: #444; /* Solid dark gray background */
+    color: white; /* White text */
+    border: none; /* Remove borders */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Some padding */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Allow margins and paddings */
+    font-size: 16px; /* Increase font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s, transform 0.2s; /* Smooth transition */
+    margin-top: 15px; /* Space above the button */
+}
+
+/* Hover effect */
+#calculate:hover {
+    background: #555; /* Darker gray on hover */
+    transform: scale(1.05); /* Slightly increase size */
+}
+
+/* Disabled button style */
+#calculate:disabled {
+    background-color: #ccc; /* Gray background for disabled */
+    cursor: not-allowed; /* Not allowed cursor */
+}
+
+/* Choose File Button Styles */
+input[type="file"] {
+    opacity: 0; /* Make the button transparent */
+    position: absolute; /* Position it absolutely */
+    z-index: -1; /* Place it behind other elements */
+}
+
+label[for="file-upload"] {
+    background-color: var(--accent-color); /* White background */
+    color: black; /* Black text */
+    border: 2px solid var(--accent-color); /* Border matching the accent color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for the label */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+    display: inline-block; /* Inline-block for proper spacing */
+}
+
+label[for="file-upload"]:hover {
+    background-color: #fff; /* White background on hover */
+    color: black; /* Black text on hover */
+    transform: scale(1.05); /* Slightly increase size */
+}
+
+/* Footer Styles */
+footer p {
+    font-family: var(--font-family); /* Use Poppins font */
+    color: var(--main-text-color); /* White text color */
+    text-align: center; /* Center the text */
+    margin: 20px 0; /* Margin around the paragraph */
+    font-weight: bold; /* Bold text */
+    font-size: 24px; /* Bigger text */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Reduced initial glowing effect */
+    animation: glowing 1.5s infinite alternate; /* Glowing animation */
+}
+
+@keyframes glowing {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3), 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 15px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+}

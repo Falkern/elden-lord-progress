@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elden Lord Progress</title>
+    <meta name="description" content="Check your Elden Ring progression!" />
+
+    <link rel="icon" href="assets/img/favicon.ico" />
+    <link href="assets/css/styles.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="assets/js/index.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="title">Elden Ring Progress Tracker</h1> <!-- Added Title -->
+        <div id="formSection">
+            <div class="upload-area" id="uploadArea">
+                <strong>Upload Elden Ring save file:</strong>
+                <input type="file" id="savefile" accept=".sl2, .co2" />
+                <p>(Usually located in C:/Users/<i>yourName</i>/AppData/Roaming/EldenRing/<i>aNumber</i>/ER0000.sl2)</p>
+                <span>Click to upload your file</span>
+                <div class="file-name" id="fileName"></div>
+            </div>
+            <div style="display: none" id="slot_select"></div>
+            <button style="display: none" type="button" name="calculate" id="calculate" onclick="start()">Start</button>
+        </div>
+        <div id="resultSection"></div>
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('savefile');
+        const fileNameDisplay = document.getElementById('fileName');
+
+        // Handle file selection via click
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // Handle file selection
+        fileInput.addEventListener('change', () => {
+            handleFiles(fileInput.files);
+        });
+
+        // Function to handle file(s)
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const fileName = files[0].name;
+                fileNameDisplay.textContent = fileName; // Display the file name
+                document.getElementById("slot_select").style.display = "block"; // Show slot select if needed
+                document.getElementById("calculate").style.display = "block"; // Show calculate button
+            } else {
+                fileNameDisplay.textContent = ''; // Clear display if no files
+            }
+        }
+    </script>
+    <footer>
+        <p>Made by <a href="https://github.com/Falkern" target="_blank">FALKERN</a></p>
+    </footer>
+</body>
+
+</html>
