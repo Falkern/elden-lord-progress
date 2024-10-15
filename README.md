@@ -1,6 +1,6 @@
 # Elden Lord Progress 👑
 
-Welcome to **Elden Lord Progress**! This is an app where you can upload your **ELDEN RING** save file to check your progress throughout the game.
+This is an app where you can upload your **ELDEN RING** save files to check your progress throughout the game.
 
 ## Features
 
