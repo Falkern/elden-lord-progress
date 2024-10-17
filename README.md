@@ -10,7 +10,7 @@ There are some broken UI I'll try fixing it if i got any free time (im just lazy
 
 ## Motivation
 
-Just thought of going back to **vanilla JS** and **plain CSS** and **HTML** for a bit to change things up since I have just being using Typescript and VueJS.
+Just thought of going back to **Vanilla JS** and **CSS** and **HTML** for a bit to change things up since I have just being using Typescript and VueJS.
 
 ## How to Use
 
