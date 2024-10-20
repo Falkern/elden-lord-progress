@@ -30,7 +30,7 @@ Welcome to the **Elden Ring Progress Tracker**! This tool helps you track your p
 
 ### Live Demo
 
-For a live demo, visit the [Vercel deployed site](https://elden-lord-progress.vercel.app).
+For a live demo, visit [Vercel](https://elden-lord-progress.vercel.app).
 
 ### Usage
 
