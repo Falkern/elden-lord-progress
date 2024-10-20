@@ -1,11 +1,3 @@
-/*const pattern = new Uint8Array([
-    255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-]);*/
 const pattern = new Uint8Array([176, 173, 1, 0, 1, 255, 255, 255]);
 const pattern2 = new Uint8Array([176, 173, 1, 0, 1]);
 
@@ -22,11 +14,9 @@ let id_list = [];
 let dlcFile = false;
 
 window.onload = async () => {
-  //Load json files into global variables
   readJsonFiles();
   const fileSelector = document.getElementById("savefile");
-  fileSelector.addEventListener("change", async (event) => {
-    // no file selected to read
+  fileSelector.addEventListener("change", async () => {
     if (document.getElementById("savefile").value === null) {
       alert("No file selected");
       return;
@@ -34,42 +24,79 @@ window.onload = async () => {
 
     await readFile();
     updateSlotDropdown(getNames(file_read));
-    document.getElementById("slot_selector").onchange = (e) => {
+    document.getElementById("slot_selector").onchange = () => {
       document.getElementById("calculate").style.display = "inline-block";
     };
   });
 };
 
-/*function reload() {
-    readFile();
-    const { slots, id_list } = fetchInventory();
-    if (id_list.length > lastList.length) {
-        console.log("difference");
-        id_list.forEach(itemId => {
-            if (!lastList.includes(itemId)) {
-                const elt = document.getElementById(itemId);
-                if (elt) {
-                    console.log("vraiment");
-                    const name = elt.lastChild.value;
-                    console.log(name);
-                    elt.classList.remove("disabledCard");
-                    elt.firstChild.alt = name;
-                    elt.firstChild.src = `assets/img/items/${sanitizeImgName(name)}.webp`;
-                    elt.childNodes[1].innerText = name;
-                }
-            }
-        });
-        lastList = id_list;
+function readFile() {
+  return new Promise((resolve, reject) => {
+    const file = document.getElementById("savefile").files[0];
+    if (!file) {
+      alert("No file selected. Please choose a valid save file.");
+      reject("No file selected");
+      return;
     }
 
-    const itemsQuantities = findItemQuantities(slots[selected_slot]);
-    if (JSON.stringify(itemsQuantities) != JSON.stringify(lastQuantities)) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      file_read = e.target.result;
+      if (
+        !buffer_equal(file_read["slice"](0, 4), new Int8Array([66, 78, 68, 52]))
+      ) {
+        alert("Invalid file format. Please select a valid save file.");
+        reject("Invalid file format");
+        return;
+      }
+      resolve();
+    };
+    reader.onerror = (e) => {
+      alert("Error reading file: " + e.target.error.message);
+      reject(e.target.error);
+    };
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+function reload() {
+  readFile()
+    .then(() => {
+      fetchInventory();
+      if (id_list.length > lastList.length) {
+        console.log("difference");
+        id_list.forEach((itemId) => {
+          if (!lastList.includes(itemId)) {
+            const elt = document.getElementById(itemId);
+            if (elt) {
+              console.log("vraiment");
+              const name = elt.lastChild.value;
+              console.log(name);
+              elt.classList.remove("disabledCard");
+              elt.firstChild.alt = name;
+              elt.firstChild.src = `assets/img/items/${sanitizeImgName(
+                name
+              )}.webp`;
+              elt.childNodes[1].innerText = name;
+            }
+          }
+        });
+        lastList = id_list;
+      }
+
+      const itemsQuantities = findItemQuantities(slots[selected_slot]);
+      if (JSON.stringify(itemsQuantities) != JSON.stringify(lastQuantities)) {
         lastQuantities = itemsQuantities;
         for (let i = 0; i < itemsQuantities.length; i++) {
-            document.getElementById("quantifiable" + i).innerText = itemsQuantities[i];
+          document.getElementById("quantifiable" + i).innerText =
+            itemsQuantities[i];
         }
-    }
-}*/
+      }
+    })
+    .catch((error) => {
+      console.error("Error reloading file:", error);
+    });
+}
 
 function readFile() {
   return new Promise((resolve, reject) => {
@@ -89,7 +116,6 @@ function readFile() {
       resolve();
     };
     reader.onerror = (e) => {
-      // error occurred
       console.error("Error : " + e.type);
       reject();
     };
@@ -199,7 +225,6 @@ function start() {
   selected_slot = document.querySelector("#slot_selector option:checked").value;
   fetchInventory();
   calculate();
-  //setInterval(reload, 5000);
 }
 
 function sanitizeImgName(name) {
@@ -216,7 +241,6 @@ function sanitizeImgName(name) {
 }
 
 async function calculate() {
-  //Fetch collectibles quantities
   const itemsQuantities = findItemQuantities(slots[selected_slot]);
   lastQuantities = itemsQuantities;
   let globalCounter = 0;
@@ -229,11 +253,9 @@ async function calculate() {
   globalCounter += itemsFound;
   globalTotal += totalItems;
 
-  //Create toggleNotFoundItems checkbox
   const notFoundCheckbox =
     "<input type='checkbox' id='notFound' onclick='toggleNotFoundItems(this.checked)'/><label for='notFound'>Display not found items</label>";
 
-  //Generate collectibles HTML block
   let regionsToInsert = `<dl><dt class='regionTitle closed'>Collectibles<span class='counter'>(${itemsFound} / ${totalItems})</span></dt><dd class='closed'><div class='itemList'>`;
   for (let i = 0; i < quantifiableItems.length; i++) {
     regionsToInsert += `<div class='itemCard'>
@@ -250,7 +272,6 @@ async function calculate() {
   }
   regionsToInsert += "</div></dd>";
 
-  //Generate regions blocks
   Object.keys(itemsData).forEach((region) => {
     let zonesToInsert = "";
     let regionCounter = 0;
@@ -273,7 +294,6 @@ async function calculate() {
                     <p>${itemsData[region][zone][itemKey].name}</p>
                     </a></div>`;
         } else {
-          //Item not found
           itemsToInsert += `<div class='itemCard disabledCard' id='${itemKey}'>
                     <div class='tooltip'>Hint<div class='tooltipText'>${itemsData[region][zone][itemKey].hint}</div></div>
                     <img alt="${itemsData[region][zone][itemKey].type}" src="assets/img/hints/${itemsData[region][zone][itemKey].type}.png"/>
@@ -283,7 +303,6 @@ async function calculate() {
                     </div>`;
         }
       });
-      //Quantifiable icons
       let icons = "<span class='iconList'>";
       quantifiableItems.forEach((item) => {
         const n = item.places.reduce(
@@ -299,7 +318,6 @@ async function calculate() {
       icons += "</span>";
 
       const zoneTotal = Object.keys(itemsData[region][zone]).length;
-      //Zone insertion
       regionCounter += counter;
       regionTotal += zoneTotal;
 
@@ -314,7 +332,6 @@ async function calculate() {
       }) ${zonePctg}%</span></dt><dd class='closed'><div class="itemList">${itemsToInsert}</div></dd>`;
     });
 
-    //Region insertion
     globalCounter += regionCounter;
     globalTotal += regionTotal;
 
@@ -328,19 +345,15 @@ async function calculate() {
   });
   regionsToInsert += "</dl>";
 
-  //Global completion
   const completion = `<h2>Completion: ${Math.floor(
     (globalCounter / globalTotal) * 100
   )}%</h2>`;
 
-  //Collection link
   //const collectionLink = "<div><a href='#' onclick='showCollection()'>- See your collection -</a></div>";
 
-  //Final insertion
   document.getElementById("resultSection").innerHTML =
     completion + /*collectionLink + */ notFoundCheckbox + regionsToInsert;
 
-  //Add collapsible feature
   const elts = document.getElementsByTagName("dt");
   for (let elt of elts) {
     elt.onclick = toggleDisplay;

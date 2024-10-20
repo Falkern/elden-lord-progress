@@ -1,17 +1,35 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
 
-/* CSS Variables */
+/* Define color variables */
 :root {
     --main-bg-color: #000; /* Black background */
-    --main-text-color: #fff; /* White text color */
-    --accent-color: #fff; /* White accent color for links and buttons */
-    --hover-transform: translateY(-5px);
-    --hover-box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5); /* Soft white shadow */
-    --transition-ease: 0.3s ease;
-    --font-family: 'Poppins', sans-serif;
+    --main-text-color: #fff; /* White text */
+    --accent-color: #fff; /* White accents */
+    --hover-bg-color: rgba(255, 255, 255, 0.2); /* Light hover effect */
+    --disabled-bg-color: rgba(255, 255, 255, 0.3); /* Light disabled background */
+    --border-color: rgba(255, 255, 255, 0.5); /* Light border color */
 }
 
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #333;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+/* Global Styles */
 body {
     display: flex;
     flex-direction: column;
@@ -19,61 +37,62 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: var(--font-family);
+    font-family: 'Poppins', sans-serif; /* Set font to Poppins */
     color: var(--main-text-color);
     background-color: var(--main-bg-color);
     transition: background-color 0.5s ease;
-    padding: 20px; /* Padding around body */
+    padding: 20px;
+    overflow: hidden;
 }
 
 /* Title Styles */
 .title {
     color: var(--accent-color);
-    font-size: 60px; /* Increased title size */
-    margin-top: 0; /* Reset margin */
-    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+    font-size: 50px;
+    margin: 0; /* Reset margin */
+    text-shadow: 2px 2px 15px rgba(255, 255, 255, 0.2);
     text-align: center;
+    letter-spacing: 2px; /* Space between letters */
 }
 
 /* Container Styles */
 .container {
-    background-color: rgba(255, 255, 255, 0.1); /* Slight transparency */
-    margin: 20px auto; /* Center the container horizontally */
-    border-radius: 15px; /* More rounded corners */
-    padding: 30px; /* Increased padding */
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2); /* Softer shadow */
-    transition: transform var(--transition-ease), box-shadow var(--transition-ease);
-    width: 90vw;
-    max-width: 1200px;
+    background-color: rgba(255, 255, 255, 0.05);
+    margin: 20px auto; /* Center the container */
+    border-radius: 20px;
+    padding: 60px; /* Reduced padding */
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 80vw; /* Reduced width */
+    max-width: 800px; /* Reduced max width */
     height: auto;
-    max-height: 90vh;
-    overflow-y: auto;
+    max-height: 80vh; /* Reduced max height */
+    overflow-y: auto; /* Keep scroll for overflow content */
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    animation: glowing-border 1.5s infinite alternate;
 }
 
-/* Hover Effects for Containers */
-.container:hover {
-    transform: scale(1.02);
-    box-shadow: var(--hover-box-shadow);
-}
-
-/* Form Section */
-#formSection {
-    text-align: center;
+/* Glowing Border Animation */
+@keyframes glowing-border {
+    0% {
+        border-color: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        border-color: rgba(255, 255, 255, 1);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 1);
+    }
 }
 
 /* Upload Area Styles */
 .upload-area {
     border: 2px dashed var(--accent-color);
-    border-radius: 15px;
-    padding: 20px;
+    border-radius: 20px;
+    padding: 20px; /* Increased padding for better touch targets */
     text-align: center;
-    transition: border-color 0.3s ease;
-    margin: 20px 0; /* Spacing around the upload area */
-    background-color: rgba(255, 255, 255, 0.1); /* Solid transparent background */
-}
-
-.upload-area.hover {
-    border-color: #fff; /* Change color on hover */
+    margin: 20px 0;
+    background-color: rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .upload-area span {
@@ -84,28 +103,28 @@ body {
 
 /* Item Card Styles */
 .itemCard, .disabledCard {
-    background: rgba(255, 255, 255, 0.1); /* Slight transparency for item cards */
-    border-radius: 15px; /* More rounded corners */
-    margin: 10px; /* Space between cards */
-    width: 140px; /* Increased width */
-    height: 220px; /* Increased height */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    margin: 10px;
+    width: 160px;
+    height: 240px;
     text-align: center;
-    padding: 15px; /* Increased padding */
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
-    transition: transform var(--transition-ease), box-shadow var(--transition-ease);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .itemCard:hover {
-    transform: scale(1.05) var(--hover-transform);
-    box-shadow: var(--hover-box-shadow);
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.7);
 }
 
 .disabledCard {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: var(--disabled-bg-color);
     opacity: 1;
 }
 
@@ -114,8 +133,8 @@ body {
 }
 
 .itemCard img {
-    width: 100px;
-    transition: transform var(--transition-ease);
+    width: 110px;
+    transition: transform 0.3s ease;
 }
 
 .itemCard:hover img {
@@ -128,22 +147,22 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center; /* Center items */
+    justify-content: center;
 }
 
 /* Icon List */
 .iconList img {
-    width: 30px; /* Slightly larger icons */
-    height: 30px;
+    width: 35px;
+    height: 35px;
     vertical-align: middle;
-    background-color: rgba(255, 255, 255, 0.3); /* Lighter background for icons */
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     margin-left: 10px;
-    transition: transform var(--transition-ease);
+    transition: transform 0.3s ease;
 }
 
 .iconList img:hover {
-    transform: rotate(360deg);
+    transform: rotate(360deg) scale(1.1);
 }
 
 /* Definition List */
@@ -155,42 +174,42 @@ dd.opened {
     display: block;
 }
 
-dt.closed::before, dt.opened::before {
-    font-size: 14px; /* Larger font size for better readability */
+dt {
+    font-size: 16px; /* Consistent font size */
     vertical-align: middle;
     margin-right: 10px;
 }
 
 dt.closed::before {
-    content: '►';
+    content: '►'; /* Arrow for closed state */
 }
 
 dt.opened::before {
-    content: '▼';
+    content: '▼'; /* Arrow for opened state */
 }
 
 /* Counter */
 .counter {
-    font-size: 20px; /* Increased font size */
+    font-size: 22px; /* Increased font size */
     vertical-align: middle;
     margin-left: 10px;
 }
 
 /* Links */
 a {
-    color: var(--accent-color); /* White for links */
-    transition: color var(--transition-ease);
+    color: var(--accent-color);
+    transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #fff; /* White color on hover */
+    color: rgba(255, 255, 255, 0.8); /* Lighten on hover */
 }
 
 .itemCard a, #collectionHeader a {
     text-decoration: none;
 }
 
-/* Tooltip */
+/* Tooltip Styles */
 .tooltip {
     position: relative;
     display: inline-block;
@@ -202,16 +221,16 @@ a:hover {
     position: absolute;
     z-index: 1;
     opacity: 0;
-    width: 400px;
+    width: 420px;
     text-align: justify;
-    background-color: rgba(255, 255, 255, 0.9); /* Light background for tooltip */
-    color: var(--main-bg-color); /* Black text color */
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--main-bg-color);
     padding: 10px 15px;
     border-radius: 5px;
     bottom: 125%;
     left: 50%;
-    margin-left: -200px;
-    transition: opacity var(--transition-ease);
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease;
 }
 
 .tooltip:hover .tooltipText {
@@ -226,7 +245,7 @@ a:hover {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.95); /* More opaque */
+    background-color: rgba(0, 0, 0, 0.95);
     z-index: 2;
     color: var(--main-text-color);
     overflow-y: scroll;
@@ -253,94 +272,152 @@ a:hover {
     margin: 20px;
 }
 
-/* Media Queries */
-@media (max-width: 768px) {
-    .itemCard {
-        width: 100px; /* Smaller item cards on mobile */
-        height: 180px; /* Adjust height accordingly */
-    }
-    .title {
-        font-size: 36px; /* Smaller title on mobile */
-    }
+/* Button Styles */
+#submit {
+    background-color: var(--accent-color); /* White button */
+    border: none;
+    color: var(--main-bg-color); /* Black text */
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Removed duplicate .upload-area styles */
-
-.file-name {
-    margin-top: 10px;
-    font-weight: bold;
-    color: #fff; /* Change text color to white */
+#submit:hover {
+    background-color: rgba(255, 255, 255, 0.8); /* Lighten on hover */
+    transform: scale(1.05);
 }
 
-/* Button styles */
-#calculate {
-    background: #444; /* Solid dark gray background */
-    color: white; /* White text */
-    border: none; /* Remove borders */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px 20px; /* Some padding */
-    text-align: center; /* Center the text */
-    text-decoration: none; /* Remove underline */
-    display: inline-block; /* Allow margins and paddings */
-    font-size: 16px; /* Increase font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background 0.3s, transform 0.2s; /* Smooth transition */
-    margin-top: 15px; /* Space above the button */
+#submit:disabled {
+    background-color: var(--disabled-bg-color); /* Greyed out when disabled */
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
 }
 
-/* Hover effect */
-#calculate:hover {
-    background: #555; /* Darker gray on hover */
-    transform: scale(1.05); /* Slightly increase size */
+/* Footer */
+footer {
+    margin-top: auto;
+    padding: 20px;
+    text-align: center;
+    color: var(--accent-color);
+    text-shadow: 0 0 60px rgba(255, 255, 255, 1), 0 0 80px rgba(255, 255, 255, 1);
+    animation: glow 1s infinite alternate;
 }
 
-/* Disabled button style */
-#calculate:disabled {
-    background-color: #ccc; /* Gray background for disabled */
-    cursor: not-allowed; /* Not allowed cursor */
+/* Footer Text */
+.footer-text {
+    margin: 0;
+    font-size: 14px; /* Adjust font size as needed */
+    color: var(--accent-color);
+    text-shadow: 0 0 60px rgba(255, 255, 255, 1), 0 0 80px rgba(255, 255, 255, 1);
+    animation: glow 1s infinite alternate;
+    font-weight: 600;
 }
 
-/* Choose File Button Styles */
-input[type="file"] {
-    opacity: 0; /* Make the button transparent */
-    position: absolute; /* Position it absolutely */
-    z-index: -1; /* Place it behind other elements */
-}
-
-label[for="file-upload"] {
-    background-color: var(--accent-color); /* White background */
-    color: black; /* Black text */
-    border: 2px solid var(--accent-color); /* Border matching the accent color */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px 20px; /* Padding for the label */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
-    display: inline-block; /* Inline-block for proper spacing */
-}
-
-label[for="file-upload"]:hover {
-    background-color: #fff; /* White background on hover */
-    color: black; /* Black text on hover */
-    transform: scale(1.05); /* Slightly increase size */
-}
-
-/* Footer Styles */
-footer p {
-    font-family: var(--font-family); /* Use Poppins font */
-    color: var(--main-text-color); /* White text color */
-    text-align: center; /* Center the text */
-    margin: 20px 0; /* Margin around the paragraph */
-    font-weight: bold; /* Bold text */
-    font-size: 24px; /* Bigger text */
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Reduced initial glowing effect */
-    animation: glowing 1.5s infinite alternate; /* Glowing animation */
-}
-
-@keyframes glowing {
+/* Footer Glow Animation */
+@keyframes glow {
     0% {
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.3), 0 0 15px rgba(255, 255, 255, 0.2);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1);
     }
     100% {
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 15px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 10px rgba(255, 255, 255, 1);
+    }
+}
+
+/* Vendor Prefixes for Animation and Transitions */
+@-webkit-keyframes glow {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 10px rgba(255, 255, 255, 1);
+    }
+}
+
+/* Slot Selector Styles */
+.slot-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.slot-selector select {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Calculate Button Styles */
+/* Slot Selector Styles */
+.slot-selector {
+    display: flex;
+    flex-direction: column; /* Stack the selector and button vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    margin: 20px 0;
+}
+
+/* Selector Styles */
+.slot-selector select {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
+    width: 790px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    margin-bottom: 10px; /* Add margin below the selector */
+}
+
+/* Calculate Button Styles */
+#calculate {
+    background-color: var(--accent-color); /* White button */
+    border: none;
+    color: var(--main-bg-color); /* Black text */
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: block; /* Ensure it displays as a block element */
+    font-weight: 600;
+    font-family: "Poppins", sans-serif; /* Use Poppins font */
+    margin: 0 auto; /* Center the button */
+}
+
+#calculate:hover {
+    background-color: rgba(255, 255, 255, 0.8); /* Lighten on hover */
+    transform: scale(1.05);
+}
+
+#calculate:disabled {
+    background-color: var(--disabled-bg-color); /* Greyed out when disabled */
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px; /* Adjusted padding for smaller screens */
+        width: 90vw; /* Use more width on smaller screens */
+    }
+
+    .itemCard {
+        width: 140px; /* Adjust card width for smaller screens */
+        height: 220px; /* Adjust card height for smaller screens */
+    }
+
+    .title {
+        font-size: 36px; /* Smaller title size on mobile */
     }
 }
