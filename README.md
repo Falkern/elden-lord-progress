@@ -1,7 +1,7 @@
 # Elden Ring Progress Tracker
 
 This is an app where you can upload your **ELDEN RING** save files to check your progress throughout the game.<br>
-There are some broken UI I'll try fixing it if i got any free time (im just lazy tbh)
+There are some broken UI I'll try fixing it if i got any free time, i might make this a typescript project as well.
 
 ## Features
 
