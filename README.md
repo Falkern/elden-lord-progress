@@ -1,6 +1,7 @@
-# Elden Lord Progress 👑
+# Elden Ring Progress Tracker
 
-This is an app where you can upload your **ELDEN RING** save files to check your progress throughout the game.
+This is an app where you can upload your **ELDEN RING** save files to check your progress throughout the game.<br>
+There are some broken UI I'll try fixing it if i got any free time, i might make this a typescript project as well.
 
 ## Features
 
@@ -9,7 +10,7 @@ This is an app where you can upload your **ELDEN RING** save files to check your
 
 ## Motivation
 
-Just thought of going back to **vanilla JS** and **plain CSS** and **HTML** for a bit to change things up since I have just being using Typescript and VueJS.
+Just thought of going back to **Vanilla JS** and **CSS** and **HTML** for a bit to change things up since I have just being using Typescript and VueJS.
 
 ## How to Use
 
