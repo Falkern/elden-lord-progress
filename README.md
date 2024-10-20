@@ -1,21 +1,55 @@
 # Elden Ring Progress Tracker
 
-This is an app where you can upload your **ELDEN RING** save files to check your progress throughout the game.<br>
-There are some broken UI I'll try fixing it if i got any free time, i might make this a typescript project as well.
+Welcome to the **Elden Ring Progress Tracker**! This tool helps you track your progression in Elden Ring by analyzing your save files.
 
 ## Features
 
-- **Upload your save file**: Easily upload your ELDEN RING save file to track your progress.
-- **User-friendly interface**: Designed with simplicity in mind using Vanilla JS, CSS, and HTML.
+- **Upload Save File**: Easily upload your Elden Ring save file to start tracking your progress.
+- **Slot Selection**: Choose the slot whose inventory you want to analyze.
+- **Progress Calculation**: Get detailed information about your collected items and overall completion percentage.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
 
-## Motivation
+## Getting Started
 
-Just thought of going back to **Vanilla JS** and **CSS** and **HTML** for a bit to change things up since I have just being using Typescript and VueJS.
+### Prerequisites
 
-## How to Use
+- A web browser (Chrome, Firefox, Edge, etc.)
+- Elden Ring save file (usually located in `C:/Users/<yourName>/AppData/Roaming/EldenRing/<aNumber>/ER0000.sl2`)
 
-- Visit the vercel deployed site.
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Falkern/elden-ring-progress.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd elden-ring-progress
+   ```
+3. Open `index.html` in your web browser.
+
+### Live Demo
+
+For a live demo, visit the [Vercel deployed site](https://elden-lord-progress.vercel.app).
+
+### Usage
+
+1. Click on the upload area to select your Elden Ring save file.
+2. Choose the slot you want to analyze from the dropdown menu.
+3. Click the "Start" button to calculate your progress.
+4. View your progress and collected items in the results section.
 
 ## Contributing
 
-Feel free to contribute by submitting issues or pull requests!
+Contributions are welcome! Please fork the repository and submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+- Made by [FALKERN](https://github.com/Falkern)
+- Elden Ring by FromSoftware
+
+For more information, visit the [GitHub repository](https://github.com/Falkern/elden-ring-progress).
