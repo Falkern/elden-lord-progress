@@ -268,7 +268,7 @@ a:hover {
 }
 
 #collectionMain {
-    width: 90%; /* Adjusted to fit the screen */
+    width: 90%; 
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -347,17 +347,33 @@ a:hover {
     margin: 20px 0; 
 }
 
-.slot-selector select {
+
+#slot_select select option {
+    background: rgb(0, 0, 0);
+    color: #fff; 
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem; /* Increased font size */
+}
+
+#slot_select option:checked {
+    background: var(--accent-color); 
+    color: var(--main-bg-color); 
+}
+
+
+#slot_select select {
     background: rgba(255, 255, 255, 0.1);
-    color: var(--main-text-color); 
-    border: 1px solid var(--border-color); 
-    border-radius: 5px;
+    color: #fff; 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    border-radius: 8px;
     padding: 10px;
-    width: 790px; 
-    font-size: 16px; 
-    transition: border-color 0.3s ease, background-color 0.3s ease; 
-    margin-bottom: 10px; 
-    backdrop-filter: blur(5px); 
+    font-size: 16px;
+    width: 100%;
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    outline: none;
+    appearance: none; 
+    cursor: pointer;
 }
 
 #calculate {
