@@ -1,6 +1,6 @@
 # Elden Ring Progress Tracker
 
-Welcome to the **Elden Ring Progress Tracker**! This tool helps you track your progression in Elden Ring by analyzing your save files.
+This tool helps you track your progression in Elden Ring by analyzing your save files.
 
 ## Features
 
@@ -16,21 +16,9 @@ Welcome to the **Elden Ring Progress Tracker**! This tool helps you track your p
 - A web browser (Chrome, Firefox, Edge, etc.)
 - Elden Ring save file (usually located in `C:/Users/<yourName>/AppData/Roaming/EldenRing/<aNumber>/ER0000.sl2`)
 
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Falkern/elden-ring-progress.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd elden-ring-progress
-   ```
-3. Open `index.html` in your web browser.
-
 ### Live Demo
 
-For a live demo, visit [Vercel](https://elden-lord-progress.vercel.app).
+To use this tool, visit [Vercel](https://elden-lord-progress.vercel.app).
 
 ### Usage
 
