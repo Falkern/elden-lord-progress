@@ -374,6 +374,7 @@ a:hover {
     outline: none;
     appearance: none; 
     cursor: pointer;
+    font-family: 'Poppins', sans-serif;
 }
 
 #calculate {
