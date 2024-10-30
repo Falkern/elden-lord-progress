@@ -1,35 +1,34 @@
-/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+@import url('https://fonts.cdnfonts.com/css/optimus-princeps');
+@import url('https://fonts.cdnfonts.com/css/grandiflora-one');
 
-/* Define color variables */
 :root {
-    --main-bg-color: #000; /* Black background */
-    --main-text-color: #fff; /* White text */
-    --accent-color: #fff; /* White accents */
-    --hover-bg-color: rgba(255, 255, 255, 0.2); /* Light hover effect */
-    --disabled-bg-color: rgba(255, 255, 255, 0.3); /* Light disabled background */
-    --border-color: rgba(255, 255, 255, 0.5); /* Light border color */
+    --main-bg-color: #000;
+    --main-text-color: #fff;
+    --accent-color: #fff;
+    --hover-bg-color: rgba(255, 255, 255, 0.2);
+    --disabled-bg-color: rgba(255, 255, 255, 0.3);
+    --border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Scrollbar Styles */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #333;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #555;
-    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #777;
+    background: rgba(255, 255, 255, 0.5);
 }
 
-/* Global Styles */
 body {
     display: flex;
     flex-direction: column;
@@ -37,42 +36,71 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: 'Poppins', sans-serif; /* Set font to Poppins */
+    font-family: 'Poppins', sans-serif; 
     color: var(--main-text-color);
     background-color: var(--main-bg-color);
     transition: background-color 0.5s ease;
     padding: 20px;
     overflow: hidden;
+    position: relative;
 }
 
-/* Title Styles */
+.background-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+}
+
 .title {
     color: var(--accent-color);
     font-size: 50px;
-    margin: 0; /* Reset margin */
+    margin: 0;
     text-shadow: 2px 2px 15px rgba(255, 255, 255, 0.2);
     text-align: center;
-    letter-spacing: 2px; /* Space between letters */
+    letter-spacing: 2px;
+    font-family: 'OptimusPrinceps', sans-serif;
 }
 
-/* Container Styles */
 .container {
-    background-color: rgba(255, 255, 255, 0.05);
-    margin: 20px auto; /* Center the container */
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    margin: 20px auto;
     border-radius: 20px;
-    padding: 60px; /* Reduced padding */
+    padding: 60px;
     box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 80vw; /* Reduced width */
-    max-width: 800px; /* Reduced max width */
+    width: 90vw; /* Adjusted to fit the screen */
+    max-width: 800px;
     height: auto;
-    max-height: 80vh; /* Reduced max height */
-    overflow-y: auto; /* Keep scroll for overflow content */
+    max-height: 80vh;
+    overflow-y: auto;
     border: 2px solid rgba(255, 255, 255, 0.5);
     animation: glowing-border 1.5s infinite alternate;
+    font-family: 'Grandiflora One', sans-serif;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Glowing Border Animation */
+/* Add text shadow to all text elements inside the container */
+.container * {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* Adjust shadow as needed */
+}
+
+.container:hover {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 16px 40px rgba(255, 255, 255, 0.5);
+}
+
 @keyframes glowing-border {
     0% {
         border-color: rgba(255, 255, 255, 0.5);
@@ -84,11 +112,10 @@ body {
     }
 }
 
-/* Upload Area Styles */
 .upload-area {
     border: 2px dashed var(--accent-color);
     border-radius: 20px;
-    padding: 20px; /* Increased padding for better touch targets */
+    padding: 20px;
     text-align: center;
     margin: 20px 0;
     background-color: rgba(0, 0, 0, 0.05);
@@ -101,7 +128,6 @@ body {
     color: var(--main-text-color);
 }
 
-/* Item Card Styles */
 .itemCard, .disabledCard {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
@@ -141,7 +167,6 @@ body {
     transform: scale(1.1);
 }
 
-/* Item List */
 .itemList, .collectionItemList {
     width: 100%;
     display: flex;
@@ -150,7 +175,6 @@ body {
     justify-content: center;
 }
 
-/* Icon List */
 .iconList img {
     width: 35px;
     height: 35px;
@@ -165,7 +189,6 @@ body {
     transform: rotate(360deg) scale(1.1);
 }
 
-/* Definition List */
 dd.closed {
     display: none;
 }
@@ -175,41 +198,38 @@ dd.opened {
 }
 
 dt {
-    font-size: 16px; /* Consistent font size */
+    font-size: 16px;
     vertical-align: middle;
     margin-right: 10px;
 }
 
 dt.closed::before {
-    content: '►'; /* Arrow for closed state */
+    content: '►';
 }
 
 dt.opened::before {
-    content: '▼'; /* Arrow for opened state */
+    content: '▼';
 }
 
-/* Counter */
 .counter {
-    font-size: 22px; /* Increased font size */
+    font-size: 22px;
     vertical-align: middle;
     margin-left: 10px;
 }
 
-/* Links */
 a {
     color: var(--accent-color);
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: rgba(255, 255, 255, 0.8); /* Lighten on hover */
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .itemCard a, #collectionHeader a {
     text-decoration: none;
 }
 
-/* Tooltip Styles */
 .tooltip {
     position: relative;
     display: inline-block;
@@ -238,7 +258,6 @@ a:hover {
     opacity: 1;
 }
 
-/* Collection Screen */
 #collectionScreen {
     position: absolute;
     top: 0;
@@ -252,16 +271,14 @@ a:hover {
     transition: background-color 0.5s ease;
 }
 
-/* Collection Main */
 #collectionMain {
-    width: 70%;
+    width: 90%; /* Adjusted to fit the screen */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }
 
-/* Collection Header */
 #collectionHeader {
     width: 100%;
 }
@@ -272,51 +289,42 @@ a:hover {
     margin: 20px;
 }
 
-/* Button Styles */
 #submit {
-    background-color: var(--accent-color); /* White button */
+    background-color: transparent;
     border: none;
-    color: var(--main-bg-color); /* Black text */
+    color: var(--main-bg-color);
     padding: 10px 20px;
     text-align: center;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #submit:hover {
-    background-color: rgba(255, 255, 255, 0.8); /* Lighten on hover */
-    transform: scale(1.05);
+    background-color: var(--accent-color);
+    color: var(--main-bg-color);
 }
 
-#submit:disabled {
-    background-color: var(--disabled-bg-color); /* Greyed out when disabled */
-    cursor: not-allowed; /* Change cursor to indicate disabled state */
-}
-
-/* Footer */
-footer {
-    margin-top: auto;
-    padding: 20px;
-    text-align: center;
-    color: var(--accent-color);
-    text-shadow: 0 0 60px rgba(255, 255, 255, 1), 0 0 80px rgba(255, 255, 255, 1);
-    animation: glow 1s infinite alternate;
-}
-
-/* Footer Text */
 .footer-text {
     margin: 0;
-    font-size: 14px; /* Adjust font size as needed */
+    font-size: 14px; 
     color: var(--accent-color);
     text-shadow: 0 0 60px rgba(255, 255, 255, 1), 0 0 80px rgba(255, 255, 255, 1);
     animation: glow 1s infinite alternate;
     font-weight: 600;
 }
 
-/* Footer Glow Animation */
+.footer-text a {
+    text-decoration: none; 
+    color: var(--accent-color); 
+}
+
+.footer-text a:hover {
+    color: rgba(255, 255, 255, 0.8); 
+}
+
 @keyframes glow {
     0% {
         text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1);
@@ -326,7 +334,6 @@ footer {
     }
 }
 
-/* Vendor Prefixes for Animation and Transitions */
 @-webkit-keyframes glow {
     0% {
         text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1);
@@ -336,88 +343,50 @@ footer {
     }
 }
 
-/* Slot Selector Styles */
 .slot-selector {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    margin: 20px 0; 
 }
 
 .slot-selector select {
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
-    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--main-text-color); 
+    border: 1px solid var(--border-color); 
     border-radius: 5px;
     padding: 10px;
-    font-size: 16px;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    width: 790px; 
+    font-size: 16px; 
+    transition: border-color 0.3s ease, background-color 0.3s ease; 
+    margin-bottom: 10px; 
+    backdrop-filter: blur(5px); 
 }
 
-/* Calculate Button Styles */
-/* Slot Selector Styles */
-.slot-selector {
-    display: flex;
-    flex-direction: column; /* Stack the selector and button vertically */
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    margin: 20px 0;
-}
-
-/* Selector Styles */
-.slot-selector select {
-    background-color: var(--main-bg-color);
-    color: var(--main-text-color);
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    padding: 10px;
-    width: 790px;
-    font-size: 16px;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-    margin-bottom: 10px; /* Add margin below the selector */
-}
-
-/* Calculate Button Styles */
 #calculate {
-    background-color: var(--accent-color); /* White button */
-    border: none;
-    color: var(--main-bg-color); /* Black text */
-    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1); 
+    border: none; 
+    color: white;
+    padding: 10px 20px; 
     text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    display: block; /* Ensure it displays as a block element */
-    font-weight: 600;
-    font-family: "Poppins", sans-serif; /* Use Poppins font */
-    margin: 0 auto; /* Center the button */
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    display: block; 
+    font-weight: 600; 
+    font-family: "Poppins", sans-serif;
+    margin: 0 auto;
+    backdrop-filter: blur(5px); 
 }
 
 #calculate:hover {
-    background-color: rgba(255, 255, 255, 0.8); /* Lighten on hover */
-    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05); 
 }
 
 #calculate:disabled {
-    background-color: var(--disabled-bg-color); /* Greyed out when disabled */
-    cursor: not-allowed; /* Change cursor to indicate disabled state */
-}
-
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .container {
-        padding: 40px; /* Adjusted padding for smaller screens */
-        width: 90vw; /* Use more width on smaller screens */
-    }
-
-    .itemCard {
-        width: 140px; /* Adjust card width for smaller screens */
-        height: 220px; /* Adjust card height for smaller screens */
-    }
-
-    .title {
-        font-size: 36px; /* Smaller title size on mobile */
-    }
+    background-color: var(--disabled-bg-color); 
+    cursor: not-allowed; 
 }
