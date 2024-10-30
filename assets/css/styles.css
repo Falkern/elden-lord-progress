@@ -96,11 +96,6 @@ body {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* Adjust shadow as needed */
 }
 
-.container:hover {
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 16px 40px rgba(255, 255, 255, 0.5);
-}
-
 @keyframes glowing-border {
     0% {
         border-color: rgba(255, 255, 255, 0.2);
