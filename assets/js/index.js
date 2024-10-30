@@ -139,13 +139,13 @@ function updateSlotDropdown(slot_name_list) {
           <select aria-label="Select slot" id="slot_selector">
            <option hidden selected>Select the slot whose inventory you want to analyze</option>`;
   const selector = select.getElementsByTagName("select")[0];
-  slot_name_list.forEach((name, index) => {
-    if (name === "") {
-      selector.innerHTML += `<option value="${index}" disabled> - </option>`;
+  for (let i = 0; i < 10; i++) {
+    if (slot_name_list[i] === "") {
+      selector.innerHTML += `<option value="${i}" disabled> - </option>`;
     } else {
-      selector.innerHTML += `<option value="${index}"> ${name} </option>`;
+      selector.innerHTML += `<option value="${i}"> ${slot_name_list[i]} </option>`;
     }
-  });
+  }
   select.style.display = "block";
 }
 
