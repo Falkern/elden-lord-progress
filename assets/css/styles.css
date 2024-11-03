@@ -1,405 +1,430 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
-@import url('https://fonts.cdnfonts.com/css/optimus-princeps');
-@import url('https://fonts.cdnfonts.com/css/grandiflora-one');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap");
+@import url("https://fonts.cdnfonts.com/css/optimus-princeps");
+@import url("https://fonts.cdnfonts.com/css/grandiflora-one");
 
 :root {
-    --main-bg-color: #000;
-    --main-text-color: #fff;
-    --accent-color: #fff;
-    --hover-bg-color: rgba(255, 255, 255, 0.2);
-    --disabled-bg-color: rgba(255, 255, 255, 0.3);
-    --border-color: rgba(255, 255, 255, 0.5);
+  --main-bg-color: #000;
+  --main-text-color: #fff;
+  --accent-color: #fff;
+  --hover-bg-color: rgba(255, 255, 255, 0.2);
+  --disabled-bg-color: rgba(255, 255, 255, 0.3);
+  --border-color: rgba(255, 255, 255, 0.5);
 }
 
 ::-webkit-scrollbar {
-    width: 12px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: 'Poppins', sans-serif; 
-    color: var(--main-text-color);
-    background-color: var(--main-bg-color);
-    transition: background-color 0.5s ease;
-    padding: 20px;
-    overflow: hidden;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: var(--main-text-color);
+  background-color: var(--main-bg-color);
+  transition: background-color 0.5s ease;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
 }
 
 .background-video {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1;
-    transform: translate(-50%, -50%);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  transform: translate(-50%, -50%);
 }
 
 .title {
-    color: var(--accent-color);
-    font-size: 50px;
-    margin: 0;
-    text-shadow: 2px 2px 15px rgba(255, 255, 255, 0.2);
-    text-align: center;
-    letter-spacing: 2px;
-    font-family: 'OptimusPrinceps', sans-serif;
+  color: var(--accent-color);
+  font-size: 50px;
+  margin: 0;
+  text-shadow: 2px 2px 15px rgba(255, 255, 255, 0.2);
+  text-align: center;
+  letter-spacing: 2px;
+  font-family: "OptimusPrinceps", sans-serif;
 }
 
 .container {
-    user-select: none;
-    position: relative;
-    z-index: 1;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    margin: 20px auto;
-    border-radius: 20px;
-    padding: 60px;
-    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 90vw; /* Adjusted to fit the screen */
-    max-width: 800px;
-    height: auto;
-    max-height: 80vh;
-    overflow-y: auto;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    animation: glowing-border 1.5s infinite alternate;
-    font-family: 'Grandiflora One', sans-serif;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  user-select: none;
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  margin: 20px auto;
+  border-radius: 20px;
+  padding: 60px;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  width: 90vw; /* Adjusted to fit the screen */
+  max-width: 800px;
+  height: auto;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  animation: glowing-border 1.5s infinite alternate;
+  font-family: "Grandiflora One", sans-serif;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Add text shadow to all text elements inside the container */
 .container * {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* Adjust shadow as needed */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* Adjust shadow as needed */
 }
 
 @keyframes glowing-border {
-    0% {
-        border-color: rgba(255, 255, 255, 0.2);
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0.2), 0 0 10px rgba(255, 255, 255, 0.2);
-    }
-    100% {
-        border-color: rgba(255, 255, 255, 0.5);
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5);
-    }
+  0% {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 0 5px rgba(255, 255, 255, 0.2),
+      0 0 10px rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow:
+      0 0 10px rgba(255, 255, 255, 0.5),
+      0 0 20px rgba(255, 255, 255, 0.5);
+  }
 }
 
 .upload-area {
-    border: 2px dashed var(--accent-color);
-    border-radius: 20px;
-    padding: 20px;
-    text-align: center;
-    margin: 20px 0;
-    background-color: rgba(0, 0, 0, 0.05);
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+  border: 2px dashed var(--accent-color);
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  margin: 20px 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .upload-area span {
-    display: inline-block;
-    margin-top: 10px;
-    color: var(--main-text-color);
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--main-text-color);
 }
 
-.itemCard, .disabledCard {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    margin: 10px;
-    width: 160px;
-    height: 240px;
-    text-align: center;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.itemCard,
+.disabledCard {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  margin: 10px;
+  width: 160px;
+  height: 240px;
+  text-align: center;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.5);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .itemCard:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.7);
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.7);
 }
 
 .disabledCard {
-    background-color: var(--disabled-bg-color);
-    opacity: 1;
+  background-color: var(--disabled-bg-color);
+  opacity: 1;
 }
 
 .disabledCard img {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .itemCard img {
-    width: 110px;
-    transition: transform 0.3s ease;
+  width: 110px;
+  transition: transform 0.3s ease;
 }
 
 .itemCard:hover img {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
-.itemList, .collectionItemList {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+.itemList,
+.collectionItemList {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .iconList img {
-    width: 35px;
-    height: 35px;
-    vertical-align: middle;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    margin-left: 10px;
-    transition: transform 0.3s ease;
+  width: 35px;
+  height: 35px;
+  vertical-align: middle;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
 }
 
 .iconList img:hover {
-    transform: rotate(360deg) scale(1.1);
+  transform: rotate(360deg) scale(1.1);
 }
 
 dd.closed {
-    display: none;
+  display: none;
 }
 
 dd.opened {
-    display: block;
+  display: block;
 }
 
 dt {
-    font-size: 16px;
-    vertical-align: middle;
-    margin-right: 10px;
+  font-size: 16px;
+  vertical-align: middle;
+  margin-right: 10px;
 }
 
 dt.closed::before {
-    content: '►';
+  content: "►";
 }
 
 dt.opened::before {
-    content: '▼';
+  content: "▼";
 }
 
 .counter {
-    font-size: 22px;
-    vertical-align: middle;
-    margin-left: 10px;
+  font-size: 22px;
+  vertical-align: middle;
+  margin-left: 10px;
 }
 
 a {
-    color: var(--accent-color);
-    transition: color 0.3s ease;
+  color: var(--accent-color);
+  transition: color 0.3s ease;
 }
 
 a:hover {
-    color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.itemCard a, #collectionHeader a {
-    text-decoration: none;
+.itemCard a,
+#collectionHeader a {
+  text-decoration: none;
 }
 
 .tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted white;
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted white;
 }
 
 .tooltip .tooltipText {
-    visibility: hidden;
-    position: absolute;
-    z-index: 1;
-    opacity: 0;
-    width: 420px;
-    text-align: justify;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: var(--main-bg-color);
-    padding: 10px 15px;
-    border-radius: 5px;
-    bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: opacity 0.3s ease;
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  width: 420px;
+  text-align: justify;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--main-bg-color);
+  padding: 10px 15px;
+  border-radius: 5px;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease;
 }
 
 .tooltip:hover .tooltipText {
-    visibility: visible;
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
 #collectionScreen {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.95);
-    z-index: 2;
-    color: var(--main-text-color);
-    overflow-y: scroll;
-    transition: background-color 0.5s ease;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 2;
+  color: var(--main-text-color);
+  overflow-y: scroll;
+  transition: background-color 0.5s ease;
 }
 
 #collectionMain {
-    width: 90%; 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 #collectionHeader {
-    width: 100%;
+  width: 100%;
 }
 
 #collectionHeader div {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
 }
 
 #submit {
-    background-color: transparent;
-    border: none;
-    color: var(--main-bg-color);
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: transparent;
+  border: none;
+  color: var(--main-bg-color);
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 #submit:hover {
-    background-color: var(--accent-color);
-    color: var(--main-bg-color);
+  background-color: var(--accent-color);
+  color: var(--main-bg-color);
 }
 
 .footer-text {
-    margin: 0;
-    font-size: 14px; 
-    color: var(--accent-color);
-    text-shadow: 0 0 60px rgba(255, 255, 255, 1), 0 0 80px rgba(255, 255, 255, 1);
-    animation: glow 1s infinite alternate;
-    font-weight: 600;
+  margin: 0;
+  font-size: 14px;
+  color: var(--accent-color);
+  text-shadow:
+    0 0 60px rgba(255, 255, 255, 1),
+    0 0 80px rgba(255, 255, 255, 1);
+  animation: glow 1s infinite alternate;
+  font-weight: 600;
 }
 
 .footer-text a {
-    text-decoration: none; 
-    color: var(--accent-color); 
+  text-decoration: none;
+  color: var(--accent-color);
 }
 
 .footer-text a:hover {
-    color: rgba(255, 255, 255, 0.8); 
+  color: rgba(255, 255, 255, 0.8);
 }
 
 @keyframes glow {
-    0% {
-        text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1);
-    }
-    100% {
-        text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 10px rgba(255, 255, 255, 1);
-    }
+  0% {
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 1),
+      0 0 20px rgba(255, 255, 255, 1);
+  }
+  100% {
+    text-shadow:
+      0 0 20px rgba(255, 255, 255, 1),
+      0 0 10px rgba(255, 255, 255, 1);
+  }
 }
 
 @-webkit-keyframes glow {
-    0% {
-        text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1);
-    }
-    100% {
-        text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 10px rgba(255, 255, 255, 1);
-    }
+  0% {
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 1),
+      0 0 20px rgba(255, 255, 255, 1);
+  }
+  100% {
+    text-shadow:
+      0 0 20px rgba(255, 255, 255, 1),
+      0 0 10px rgba(255, 255, 255, 1);
+  }
 }
 
 .slot-selector {
-    display: flex;
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    margin: 20px 0; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
 }
 
-
 #slot_select select option {
-    background: rgb(0, 0, 0);
-    color: #fff; 
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.7rem; /* Increased font size */
+  background: rgb(0, 0, 0);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.7rem; /* Increased font size */
 }
 
 #slot_select option:checked {
-    background: var(--accent-color); 
-    color: var(--main-bg-color); 
+  background: var(--accent-color);
+  color: var(--main-bg-color);
 }
 
-
 #slot_select select {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff; 
-    border: 1px solid rgba(255, 255, 255, 0.3); 
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 16px;
-    width: 100%;
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px);
-    outline: none;
-    appearance: none; 
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
 }
 
 #calculate {
-    background: rgba(255, 255, 255, 0.1); 
-    border: none; 
-    color: white;
-    padding: 10px 20px; 
-    text-align: center;
-    font-size: 16px; 
-    cursor: pointer; 
-    border-radius: 5px; 
-    transition: background-color 0.3s ease, transform 0.3s ease; 
-    display: block; 
-    font-weight: 600; 
-    font-family: "Poppins", sans-serif;
-    margin: 0 auto;
-    backdrop-filter: blur(5px); 
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+  display: block;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  margin: 0 auto;
+  backdrop-filter: blur(5px);
 }
 
 #calculate:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05); 
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
 }
 
 #calculate:disabled {
-    background-color: var(--disabled-bg-color); 
-    cursor: not-allowed; 
+  background-color: var(--disabled-bg-color);
+  cursor: not-allowed;
 }

@@ -75,7 +75,7 @@ function reload() {
               elt.classList.remove("disabledCard");
               elt.firstChild.alt = name;
               elt.firstChild.src = `assets/img/items/${sanitizeImgName(
-                name
+                name,
               )}.webp`;
               elt.childNodes[1].innerText = name;
             }
@@ -153,53 +153,53 @@ function getNames(file_read) {
   const decoder = new TextDecoder("utf-8");
   const name1 = decoder.decode(
     new Int8Array(
-      Array.from(new Uint16Array(file_read.slice(0x1901d0e, 0x1901d0e + 32)))
-    )
+      Array.from(new Uint16Array(file_read.slice(0x1901d0e, 0x1901d0e + 32))),
+    ),
   );
   const name2 = decoder.decode(
     new Int8Array(
-      Array.from(new Uint16Array(file_read.slice(0x1901f5a, 0x1901f5a + 32)))
-    )
+      Array.from(new Uint16Array(file_read.slice(0x1901f5a, 0x1901f5a + 32))),
+    ),
   );
   const name3 = decoder.decode(
     new Int8Array(
-      Array.from(new Uint16Array(file_read.slice(0x19021a6, 0x19021a6 + 32)))
-    )
+      Array.from(new Uint16Array(file_read.slice(0x19021a6, 0x19021a6 + 32))),
+    ),
   );
   const name4 = decoder.decode(
     new Int8Array(
-      Array.from(new Uint16Array(file_read.slice(0x19023f2, 0x19023f2 + 32)))
-    )
+      Array.from(new Uint16Array(file_read.slice(0x19023f2, 0x19023f2 + 32))),
+    ),
   );
   const name5 = decoder.decode(
     new Int8Array(
-      Array.from(new Uint16Array(file_read.slice(0x190263e, 0x190263e + 32)))
-    )
+      Array.from(new Uint16Array(file_read.slice(0x190263e, 0x190263e + 32))),
+    ),
   );
   const name6 = decoder.decode(
     new Int8Array(
-      Array.from(new Uint16Array(file_read.slice(0x190288a, 0x190288a + 32)))
-    )
+      Array.from(new Uint16Array(file_read.slice(0x190288a, 0x190288a + 32))),
+    ),
   );
   const name7 = decoder.decode(
     new Int8Array(
-      Array.from(new Uint16Array(file_read.slice(0x1902ad6, 0x1902ad6 + 32)))
-    )
+      Array.from(new Uint16Array(file_read.slice(0x1902ad6, 0x1902ad6 + 32))),
+    ),
   );
   const name8 = decoder.decode(
     new Int8Array(
-      Array.from(new Uint16Array(file_read.slice(0x1902d22, 0x1902d22 + 32)))
-    )
+      Array.from(new Uint16Array(file_read.slice(0x1902d22, 0x1902d22 + 32))),
+    ),
   );
   const name9 = decoder.decode(
     new Int8Array(
-      Array.from(new Uint16Array(file_read.slice(0x1902f6e, 0x1902f6e + 32)))
-    )
+      Array.from(new Uint16Array(file_read.slice(0x1902f6e, 0x1902f6e + 32))),
+    ),
   );
   const name10 = decoder.decode(
     new Int8Array(
-      Array.from(new Uint16Array(file_read.slice(0x19031ba, 0x19031ba + 32)))
-    )
+      Array.from(new Uint16Array(file_read.slice(0x19031ba, 0x19031ba + 32))),
+    ),
   );
 
   const names = [
@@ -248,7 +248,7 @@ async function calculate() {
   const itemsFound = itemsQuantities.reduce((prev, cur) => prev + cur, 0);
   const totalItems = quantifiableItems.reduce(
     (prev, cur) => prev + cur.places.length,
-    0
+    0,
   );
   globalCounter += itemsFound;
   globalTotal += totalItems;
@@ -262,12 +262,12 @@ async function calculate() {
                     <img alt="${
                       quantifiableItems[i].name
                     }" src="assets/img/items/${quantifiableItems[
-      i
-    ].name.replaceAll(":", "")}.png"/>
+                      i
+                    ].name.replaceAll(":", "")}.png"/>
                     <p id="quantifiable${i}">${quantifiableItems[i].name}</p>
                     <p>${itemsQuantities[i]} / ${
-      quantifiableItems[i].places.length
-    }</p>
+                      quantifiableItems[i].places.length
+                    }</p>
                     </div>`;
   }
   regionsToInsert += "</div></dd>";
@@ -284,13 +284,13 @@ async function calculate() {
           //Item found
           counter++;
           itemsToInsert += `<div class='itemCard' id='${itemKey}'><a target="_blank" href='https://eldenring.wiki.fextralife.com/${sanitizeURL(
-            itemsData[region][zone][itemKey].name
+            itemsData[region][zone][itemKey].name,
           )}'>
                     <img alt="${
                       itemsData[region][zone][itemKey].name
                     }" src="assets/img/items/${sanitizeImgName(
-            itemsData[region][zone][itemKey].name
-          )}.webp"/>
+                      itemsData[region][zone][itemKey].name,
+                    )}.webp"/>
                     <p>${itemsData[region][zone][itemKey].name}</p>
                     </a></div>`;
         } else {
@@ -307,7 +307,7 @@ async function calculate() {
       quantifiableItems.forEach((item) => {
         const n = item.places.reduce(
           (cnt, val) => (val === zone ? cnt + 1 : cnt),
-          0
+          0,
         );
         for (let i = 0; i < n; i++) {
           icons += `<img alt="${item.name}" title="${
@@ -346,7 +346,7 @@ async function calculate() {
   regionsToInsert += "</dl>";
 
   const completion = `<h2>Completion: ${Math.floor(
-    (globalCounter / globalTotal) * 100
+    (globalCounter / globalTotal) * 100,
   )}%</h2>`;
 
   //const collectionLink = "<div><a href='#' onclick='showCollection()'>- See your collection -</a></div>";
@@ -366,7 +366,7 @@ function fetchInventory() {
   const inventory = Array.from(getInventory(slots[selected_slot]));
   id_list = split(inventory, dlcFile ? 8 : 16);
   id_list.forEach(
-    (raw_id, index) => (id_list[index] = getIdReversed(raw_id).toUpperCase())
+    (raw_id, index) => (id_list[index] = getIdReversed(raw_id).toUpperCase()),
   );
   lastList = id_list;
 }
@@ -433,7 +433,7 @@ function getInventory(slot) {
   index1 =
     subfinder(
       slot.subarray(index, slot.byteLength),
-      new Uint8Array(50).fill(0)
+      new Uint8Array(50).fill(0),
     ) +
     index +
     6;
@@ -505,9 +505,8 @@ function toggleNotFoundItems(value) {
   for (let card of elts) {
     if (value) {
       const name = card.getElementsByTagName("input")[0].value;
-      card.getElementsByTagName(
-        "img"
-      )[0].src = `assets/img/items/${sanitizeImgName(name)}.webp`;
+      card.getElementsByTagName("img")[0].src =
+        `assets/img/items/${sanitizeImgName(name)}.webp`;
       card.getElementsByTagName("p")[0].innerText = name;
     } else {
       const type = card.getElementsByTagName("input")[1].value;
@@ -589,13 +588,13 @@ function collectionPage(pageNumber) {
       const itemInfos = searchItemInfos(item);
       if (id_list.includes(item)) {
         const elt = `<div class='itemCard'><a target="_blank" href='https://eldenring.wiki.fextralife.com/${sanitizeURL(
-          itemInfos.name
+          itemInfos.name,
         )}'>
                 <img alt="${
                   itemInfos.name
                 }" src="assets/img/items/${sanitizeImgName(
-          itemInfos.name
-        )}.webp"/>
+                  itemInfos.name,
+                )}.webp"/>
                 <p>${itemInfos.name}</p>
                 </a></div>`;
         row.innerHTML += elt;
